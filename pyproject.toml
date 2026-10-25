@@ -1,6 +1,6 @@
 [project]
 name = "js8call-mcp"
-version = "0.0.1"
+version = "0.0.2"
 description = "JS8Call MCP server for HF messaging — in development"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
