@@ -19,7 +19,9 @@ from fastmcp import FastMCP
 from . import __version__
 
 PLANNED = (
-    "Read-only access to JS8Call's API: the decode stream, stations heard, message traffic and the propagation those imply. No write, no PTT, no transmit control — a permanent constraint, not a first-version limit."
+    "Read-only access to JS8Call's API: the decode stream, stations heard, message "
+    "traffic and the propagation those imply. No write, no PTT, no transmit control "
+    "— a permanent constraint, not a first-version limit."
 )
 TRACKING = "https://github.com/qso-graph/qso-graph-devel/issues/48"
 
@@ -34,7 +36,31 @@ mcp = FastMCP(
 )
 
 
-@mcp.tool()
+# MCP 2026-07-28 tool annotations. The defaults are pessimistic — a tool that
+# declares nothing is advertised as destructive, non-idempotent and open-world,
+# and the specification tells a client it may keep a human in the loop for that.
+#
+# `readOnlyHint` carries more weight here than in the rest of this fleet. For a
+# reference server it means "writes no file"; for this one it means **the
+# transmitter is never keyed**. PLANNED states that as a permanent constraint
+# rather than a first-version limit, and tests/test_mcp_conformance.py asserts
+# it against the source, so the day a tool calls JS8Call's TX API the test fails
+# rather than this hint quietly becoming a false promise about a radio.
+#
+# `openWorldHint: false` is correct today because nothing here connects to
+# anything. When the build-out reaches JS8Call's API over the local network it
+# becomes a judgement call — a running JS8Call is another program whose decode
+# stream we neither control nor can enumerate, which is how n1mm-mcp reasoned
+# about N1MM's UDP broadcast and concluded `true`.
+_ANSWERS_FROM_THE_PACKAGE = {
+    "readOnlyHint": True,
+    "destructiveHint": False,
+    "idempotentHint": True,
+    "openWorldHint": False,
+}
+
+
+@mcp.tool(annotations=_ANSWERS_FROM_THE_PACKAGE)
 def get_version_info() -> dict[str, Any]:
     """Get this server's version and development status.
 
