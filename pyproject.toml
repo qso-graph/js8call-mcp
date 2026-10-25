@@ -1,6 +1,6 @@
 [project]
 name = "js8call-mcp"
-version = "0.0.1"
+version = "0.0.2"
 description = "JS8Call MCP server for HF messaging — in development"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
@@ -49,7 +49,6 @@ extend-exclude = [".venv", "dist", "build"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
-ignore = ["E501"]
 fixable = ["I"]
 
 [tool.mypy]
