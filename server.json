@@ -6,12 +6,12 @@
     "url": "https://github.com/qso-graph/js8call-mcp",
     "source": "github"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "js8call-mcp",
-      "version": "0.0.3",
+      "version": "0.0.4",
       "transport": {
         "type": "stdio"
       }
