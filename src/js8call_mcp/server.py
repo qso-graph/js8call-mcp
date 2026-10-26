@@ -77,8 +77,25 @@ def get_version_info() -> dict[str, Any]:
     }
 
 
+USAGE = """\
+usage: js8call-mcp [--transport stdio|streamable-http] [--port N] [--version] [--help]
+
+An MCP server: an AI app (Claude Desktop, Claude Code, ...) starts it and talks
+to it over stdio. Run on its own it waits for that app; press Ctrl-C to stop.
+Set up a client: https://github.com/qso-graph/js8call-mcp#quick-start
+"""
+
+
 def main() -> None:
     """Run the server."""
+    # Without this the script ignored both flags and bound stdio, so
+    # `--help` left a user watching a banner and a hung terminal.
+    if any(a in ("-h", "--help") for a in sys.argv[1:]):
+        print(USAGE, end="")
+        return
+    if "--version" in sys.argv[1:]:
+        print(f"js8call-mcp {__version__}")
+        return
     args = sys.argv[1:]
     transport, port = "stdio", 8031
     for i, arg in enumerate(args):
