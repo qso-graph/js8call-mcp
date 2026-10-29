@@ -1,17 +1,19 @@
 [project]
 name = "jt-mcp"
 version = "0.1.0"
-description = "JS8Call MCP server for HF messaging — in development"
+description = "MCP server for the JT-mode programs' UDP messages, WSJT-X first: status, decodes, CQ, stations heard, WSPR"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
 authors = [{name = "Greg Beam, KI7MT", email = "maintainers@qso-graph.io"}]
 requires-python = ">=3.11"
 dependencies = [
     "fastmcp>=4.0,<5",
+    # WSJT-X's UDP protocol, shared with qso-graph-sim. Standard library only.
+    "qso-graph-lib>=0.1.0",
 ]
 keywords = ["amateur-radio", "ham-radio", "qso-graph", "mcp", "model-context-protocol"]
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Topic :: Communications :: Ham Radio",
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
@@ -38,7 +40,12 @@ build-backend = "hatchling.build"
 packages = ["src/jt_mcp"]
 
 [dependency-groups]
-dev = ["pytest>=8.0", "ruff>=0.6.8", "mypy>=1.11"]
+dev = [
+    "pytest>=8.0", "ruff>=0.6.8", "mypy>=1.11",
+    # Plays WSJT-X's messages from an ALL.TXT, so the listener is tested against WSJT-X's
+    # own traffic shape without a radio.
+    "qso-graph-sim>=0.2.0",
+]
 
 [tool.ruff]
 target-version = "py311"

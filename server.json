@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.qso-graph/jt-mcp",
-  "description": "JS8Call MCP server for HF messaging: decode stream, heard stations, message traffic",
+  "description": "WSJT-X over UDP for AI apps: status, decodes, who is calling CQ, stations heard, WSPR. Read-only.",
   "repository": {
     "url": "https://github.com/qso-graph/jt-mcp",
     "source": "github"
