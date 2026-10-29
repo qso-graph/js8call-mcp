@@ -33,7 +33,7 @@ import asyncio
 
 from fastmcp import Client
 
-from js8call_mcp import server
+from jt_mcp import server
 
 ANNOTATION_HINTS = ("readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint")
 
@@ -207,7 +207,7 @@ class TestItSaysItIsNotReady:
     def test_get_version_info_says_so_too(self) -> None:
         """JS-C31: and so does the one answer it can give."""
         info = call("get_version_info")
-        assert info["service_name"] == "js8call-mcp"
+        assert info["service_name"] == "jt-mcp"
         assert info["service_version"]
         assert "in development" in info["status"]
         assert info["tracking"] == server.TRACKING

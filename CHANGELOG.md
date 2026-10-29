@@ -1,9 +1,28 @@
 # Changelog
 
-All notable changes to `js8call-mcp` are documented here.
+All notable changes to `jt-mcp` are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Changed
+
+- **Renamed from `js8call-mcp` to `jt-mcp`, and the scope is the JT family.**
+  WSJT-X, JTDX, WSJT-Z, MSHV and JS8Call share one UDP protocol and would have
+  meant one listener each across several servers. One server covers them.
+
+  **WSJT-X is first, and it defines the protocol** (KI7MT, 2026-10-29): the
+  message definitions come from the WSJT-X project, `Network/NetworkMessage.hpp`
+  at the schema WSJT-X states, because the project that owns a definition is its
+  authority. A variant is supported where it works with those definitions; where
+  it does not, its difference is not implemented here.
+
+  The GitHub repository redirects from the old name. On PyPI, `js8call-mcp`
+  cannot be renamed — it keeps its six published releases and will be marked
+  superseded; `jt-mcp` is a new project, and nothing depended on the old one
+  beyond `get_version_info`.
 
 ## [0.1.0] — 2026-10-26
 

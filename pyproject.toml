@@ -1,5 +1,5 @@
 [project]
-name = "js8call-mcp"
+name = "jt-mcp"
 version = "0.1.0"
 description = "JS8Call MCP server for HF messaging — in development"
 readme = "README.md"
@@ -24,18 +24,18 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://qso-graph.io"
-Repository = "https://github.com/qso-graph/js8call-mcp"
+Repository = "https://github.com/qso-graph/jt-mcp"
 Issues = "https://github.com/qso-graph/qso-graph-devel/issues/48"
 
 [project.scripts]
-js8call-mcp = "js8call_mcp.server:main"
+jt-mcp = "jt_mcp.server:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/js8call_mcp"]
+packages = ["src/jt_mcp"]
 
 [dependency-groups]
 dev = ["pytest>=8.0", "ruff>=0.6.8", "mypy>=1.11"]

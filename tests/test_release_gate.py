@@ -4,13 +4,13 @@
 — the package itself is **not** installed, deliberately: those checks read the
 source tree rather than import it, so they hold whatever the environment has.
 `ci.yml` here *does* run that file, but with the package installed — so a test
-that imports `js8call_mcp` passes CI and fails the publish, which is the trap.
+that imports `jt_mcp` passes CI and fails the publish, which is the trap.
 
 It is not hypothetical. On 2026-10-12 two such tests were added to solar-mcp's
 copy of that file; every suite was green and its 0.3.0 publish run failed at the
 gate with `ModuleNotFoundError`, publishing nothing.
 
-This file is here because js8call-mcp's gate does not install the package and
+This file is here because jt-mcp's gate does not install the package and
 nothing stopped that import from being added. A gate that cannot catch a
 regression is a hole even while the thing it would catch is correct, which it
 is here today.
@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 GATE = Path(__file__).parent / "test_security.py"
-PACKAGE = "js8call_mcp"
+PACKAGE = "jt_mcp"
 
 
 def _imported_names(tree: ast.AST) -> set[str]:
