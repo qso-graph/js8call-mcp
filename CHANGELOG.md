@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **A WSJT-X listener, and the first working tools.** WSJT-X's UDP Server
+  messages, decoded by `qso-graph-lib` (`qso_graph_lib.jt`), the code
+  qso-graph-sim plays them with:
+  - `jt_cq`: who is calling CQ, and what kind (plain, DX, activity such as
+    POTA or SOTA, contest, region, frequency), the latest per station.
+  - `jt_status`: dial frequency and band, mode, DX call and grid, Tx enabled
+    or transmitting, your call and grid, per WSJT-X instance.
+  - `jt_decodes`: recent decodes, each read into who is calling whom, grid,
+    report and sign-off, filtered by callsign, CQ, SNR or band.
+  - `jt_heard`, `jt_wspr`, and `jt_diagnostics` for the listener itself.
+- **The listener follows the fleet's "Servers that listen" rule**
+  (QGD-INT-0005/0006): 127.0.0.1 by default, every interface refused, `--allow`
+  required on a network address, names refused, a sender not on the list
+  dropped unread, counted and shown, and everything keyed by what a datagram
+  says capped. Each rule has a test, and the sender check was removed once to
+  prove the tests fail without it.
+- **Still read-only**: nothing in the package sends a datagram, so WSJT-X's
+  Reply, Halt Tx and Free Text cannot be sent from here, and the conformance
+  test asserts it. `openWorldHint` is `true` for the tools that read WSJT-X.
+
 ### Changed
 
 - **Renamed from `js8call-mcp` to `jt-mcp`, and the scope is the JT family.**
@@ -20,9 +42,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   it does not, its difference is not implemented here.
 
   The GitHub repository redirects from the old name. On PyPI, `js8call-mcp`
-  cannot be renamed — it keeps its six published releases and will be marked
-  superseded; `jt-mcp` is a new project, and nothing depended on the old one
-  beyond `get_version_info`.
+  cannot be renamed: its six releases are **yanked** (2026-10-29), so nothing
+  installs it unless pinned, and the project is kept rather than deleted, because
+  a deleted PyPI name can be registered by anyone and the MCP Registry and old
+  configurations still name it. `jt-mcp` is a new project; nothing depended on
+  the old one beyond `get_version_info`. Its first release is 0.2.0, because
+  this repository's history already holds `v0.1.0`.
 
 ## [0.1.0] — 2026-10-26
 

@@ -721,22 +721,28 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },
+    { name = "qso-graph-lib" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
     { name = "pytest" },
+    { name = "qso-graph-sim" },
     { name = "ruff" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "fastmcp", specifier = ">=4.0,<5" }]
+requires-dist = [
+    { name = "fastmcp", specifier = ">=4.0,<5" },
+    { name = "qso-graph-lib", specifier = ">=0.1.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=1.11" },
     { name = "pytest", specifier = ">=8.0" },
+    { name = "qso-graph-sim", specifier = ">=0.2.0" },
     { name = "ruff", specifier = ">=0.6.8" },
 ]
 
@@ -1432,6 +1438,27 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/da/92/1446574745d74df0c92e6aa4a7b0b3130706a4142b2d1a5869f2eaa423c6/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65", size = 829923, upload-time = "2025-09-25T21:32:54.537Z" },
     { url = "https://files.pythonhosted.org/packages/f0/7a/1c7270340330e575b92f397352af856a8c06f230aa3e76f86b39d01b416a/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9", size = 174062, upload-time = "2025-09-25T21:32:55.767Z" },
     { url = "https://files.pythonhosted.org/packages/f1/12/de94a39c2ef588c7e6455cfbe7343d3b2dc9d6b6b2f40c4c6565744c873d/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b", size = 149341, upload-time = "2025-09-25T21:32:56.828Z" },
+]
+
+[[package]]
+name = "qso-graph-lib"
+version = "0.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/6f/e7/d81d8048e55280fb2a52d8fe78c265836e92121853df6a4e544d7333f56a/qso_graph_lib-0.1.0.tar.gz", hash = "sha256:c3fcbe2c13f893e0d9613a02aba665509004f6720b83622b294fc1d5d0c3ed31", size = 60220, upload-time = "2026-10-29T11:03:21.18Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/29/e0/b6526a9d271dd910b4f739f2d9a20c3099a0cc0af49449cae61499231009/qso_graph_lib-0.1.0-py3-none-any.whl", hash = "sha256:aa3cf3543c17fef8eec552948e4c948b7c49b234c4341862f78f526f22d5b3d7", size = 22145, upload-time = "2026-10-29T11:03:19.737Z" },
+]
+
+[[package]]
+name = "qso-graph-sim"
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "qso-graph-lib" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2b/24/79df5331ed1ed2eb96cc3a6d98f4a4326ce599c51ab66e8394cf3f0d7cd2/qso_graph_sim-0.2.0.tar.gz", hash = "sha256:7ac16b508767964930a74e92e0076b5365e79b8e26790abe4aa9cc9ead6d930f", size = 59584, upload-time = "2026-10-29T11:12:43.321Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/25/8b/fc591d13497983c7468e4eb41047a6878afc70820f43973058bdb693bb4c/qso_graph_sim-0.2.0-py3-none-any.whl", hash = "sha256:f2ac205e96bfd4290ac3916eda491b9d61bcdb30db966331115ae23256d7fb01", size = 20786, upload-time = "2026-10-29T11:12:42.063Z" },
 ]
 
 [[package]]
