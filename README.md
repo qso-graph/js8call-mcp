@@ -1,7 +1,7 @@
-<!-- mcp-name: io.github.qso-graph/js8call-mcp -->
-# js8call-mcp
+<!-- mcp-name: io.github.qso-graph/jt-mcp -->
+# jt-mcp
 
-[![PyPI](https://img.shields.io/pypi/v/js8call-mcp?label=PyPI&color=blue)](https://pypi.org/project/js8call-mcp/)
+[![PyPI](https://img.shields.io/pypi/v/jt-mcp?label=PyPI&color=blue)](https://pypi.org/project/jt-mcp/)
 
 > ### In development
 >
@@ -14,7 +14,18 @@
 > once something is actually published. Given that, a package that says what it is beats
 > an empty one that does not.
 
-Read-only access to JS8Call's API: the decode stream, stations heard, message traffic and the propagation those imply. No write, no PTT, no transmit control — a permanent constraint, not a first-version limit.
+Read-only access to the JT-mode programs' UDP messages: the decode stream, stations heard, and the propagation those imply. No write, no PTT, no transmit control — a permanent constraint, not a first-version limit.
+
+**WSJT-X first, and WSJT-X defines the protocol.** The UDP message definitions come from
+the WSJT-X project — `Network/NetworkMessage.hpp`, at the schema WSJT-X states — because
+the project that owns a definition is its authority. JTDX, WSJT-Z, MSHV and JS8Call are
+forks of, or deliberate reimplementations of, that protocol; each is supported where it
+works with those definitions, and where one does not, its difference is not implemented
+here. Message types and fields beyond the schema are ignored, which that protocol already
+requires of a conforming client.
+
+This server was `js8call-mcp` until 2026-10-29. One server covers the family because they
+share one protocol and one listener; JS8Call remains in scope, after WSJT-X.
 
 Planned work, including the data sources it would use and whether each is actually
 available, is tracked in
@@ -25,7 +36,7 @@ Part of the [qso-graph](https://qso-graph.io/) project.
 ## Install
 
 ```bash
-uvx js8call-mcp            # run it; nothing to install
+uvx jt-mcp            # run it; nothing to install
 ```
 
 ## Tools
@@ -40,7 +51,7 @@ No credentials needed — install and configure your MCP client.
 
 ### Configure your MCP client
 
-js8call-mcp works with any MCP-compatible client. Add the server config and restart.
+jt-mcp works with any MCP-compatible client. Add the server config and restart.
 
 #### Claude Desktop
 
@@ -52,7 +63,7 @@ Add to `claude_desktop_config.json` (`~/Library/Application Support/Claude/` on 
   "mcpServers": {
     "js8call": {
       "command": "uvx",
-      "args": ["js8call-mcp"]
+      "args": ["jt-mcp"]
     }
   }
 }
@@ -67,7 +78,7 @@ Add to `.claude/settings.json`:
   "mcpServers": {
     "js8call": {
       "command": "uvx",
-      "args": ["js8call-mcp"]
+      "args": ["jt-mcp"]
     }
   }
 }
@@ -82,7 +93,7 @@ Configure via Settings > Apps & Connectors, or in your agent definition:
   "mcpServers": {
     "js8call": {
       "command": "uvx",
-      "args": ["js8call-mcp"]
+      "args": ["jt-mcp"]
     }
   }
 }

@@ -1,16 +1,16 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
-  "name": "io.github.qso-graph/js8call-mcp",
+  "name": "io.github.qso-graph/jt-mcp",
   "description": "JS8Call MCP server for HF messaging: decode stream, heard stations, message traffic",
   "repository": {
-    "url": "https://github.com/qso-graph/js8call-mcp",
+    "url": "https://github.com/qso-graph/jt-mcp",
     "source": "github"
   },
   "version": "0.1.0",
   "packages": [
     {
       "registryType": "pypi",
-      "identifier": "js8call-mcp",
+      "identifier": "jt-mcp",
       "version": "0.1.0",
       "transport": {
         "type": "stdio"

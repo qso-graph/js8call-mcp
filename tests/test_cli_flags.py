@@ -9,15 +9,15 @@ behaved correctly and asserted it; this is that assertion.
 
 from __future__ import annotations
 
-from js8call_mcp import server
+from jt_mcp import server
 
 
 def test_help_and_version_exit_without_serving(capsys, monkeypatch):
     for arg, expect in (
-        ("--help", "usage: js8call-mcp"),
-        ("-h", "usage: js8call-mcp"),
-        ("--version", "js8call-mcp "),
+        ("--help", "usage: jt-mcp"),
+        ("-h", "usage: jt-mcp"),
+        ("--version", "jt-mcp "),
     ):
-        monkeypatch.setattr("sys.argv", ["js8call-mcp", arg])
+        monkeypatch.setattr("sys.argv", ["jt-mcp", arg])
         server.main()  # returns instead of serving
         assert expect in capsys.readouterr().out

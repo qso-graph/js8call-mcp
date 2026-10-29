@@ -1,4 +1,4 @@
-"""js8call-mcp: JS8Call MCP server for HF messaging.
+"""jt-mcp: JS8Call MCP server for HF messaging.
 
 **This server is in development.** It registers one tool, `get_version_info`,
 and does nothing else yet.
@@ -26,7 +26,7 @@ PLANNED = (
 TRACKING = "https://github.com/qso-graph/qso-graph-devel/issues/48"
 
 mcp = FastMCP(
-    "js8call-mcp",
+    "jt-mcp",
     version=__version__,
     instructions=(
         "IN DEVELOPMENT — this server has no working tools yet, and calling it will "
@@ -69,7 +69,7 @@ def get_version_info() -> dict[str, Any]:
         work is tracked.
     """
     return {
-        "service_name": "js8call-mcp",
+        "service_name": "jt-mcp",
         "service_version": __version__,
         "status": "in development — no working tools yet",
         "planned": PLANNED,
@@ -78,11 +78,11 @@ def get_version_info() -> dict[str, Any]:
 
 
 USAGE = """\
-usage: js8call-mcp [--transport stdio|streamable-http] [--port N] [--version] [--help]
+usage: jt-mcp [--transport stdio|streamable-http] [--port N] [--version] [--help]
 
 An MCP server: an AI app (Claude Desktop, Claude Code, ...) starts it and talks
 to it over stdio. Run on its own it waits for that app; press Ctrl-C to stop.
-Set up a client: https://github.com/qso-graph/js8call-mcp#quick-start
+Set up a client: https://github.com/qso-graph/jt-mcp#quick-start
 
 streamable-http binds 127.0.0.1 only: not another machine,
 not a container.
@@ -97,7 +97,7 @@ def main() -> None:
         print(USAGE, end="")
         return
     if "--version" in sys.argv[1:]:
-        print(f"js8call-mcp {__version__}")
+        print(f"jt-mcp {__version__}")
         return
     args = sys.argv[1:]
     transport, port = "stdio", 8031
@@ -113,7 +113,7 @@ def main() -> None:
         # no host option, so this is never reachable from another machine
         # or from outside a container. Silent before this line.
         print(
-            f"js8call-mcp on http://127.0.0.1:{port}/mcp - loopback only",
+            f"jt-mcp on http://127.0.0.1:{port}/mcp - loopback only",
             file=sys.stderr,
         )
         mcp.run(transport="streamable-http", port=port)

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from js8call_mcp import server
+from jt_mcp import server
 
 
 def test_version_info_reports_the_development_status() -> None:
@@ -12,7 +12,7 @@ def test_version_info_reports_the_development_status() -> None:
     would install it, ask it something, and get silence they could not explain.
     """
     info = server.get_version_info()
-    assert info["service_name"] == "js8call-mcp"
+    assert info["service_name"] == "jt-mcp"
     assert "development" in info["status"]
     assert info["tracking"].endswith("/48")
     assert info["planned"]

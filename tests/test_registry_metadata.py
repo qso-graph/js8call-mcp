@@ -31,8 +31,8 @@ def test_description_is_within_the_registry_limit() -> None:
 def test_server_json_names_this_package() -> None:
     """A copied server.json naming another package would publish under it."""
     data = json.loads(SERVER_JSON.read_text())
-    assert data["name"] == "io.github.qso-graph/js8call-mcp"
-    assert data["packages"][0]["identifier"] == "js8call-mcp"
+    assert data["name"] == "io.github.qso-graph/jt-mcp"
+    assert data["packages"][0]["identifier"] == "jt-mcp"
 
 
 def test_versions_agree_with_each_other() -> None:
